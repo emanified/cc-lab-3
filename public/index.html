@@ -3,70 +3,77 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My little dashboard</title>
+  <title>Little Bean Café</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main>
-    <h1>Eman's dashboard</h1>
-
-    <div class="hero">
-      <svg id="mascot" class="mascot sleepy" viewBox="0 0 120 110" aria-hidden="true">
-        <circle cx="30" cy="20" r="13" fill="#b9a2ff" />
-        <circle cx="90" cy="20" r="13" fill="#b9a2ff" />
-        <circle cx="30" cy="20" r="6" fill="#ff9ec4" />
-        <circle cx="90" cy="20" r="6" fill="#ff9ec4" />
-        <path d="M60 10c28 0 50 20 50 48s-18 46-50 46S10 86 10 58 32 10 60 10z" fill="#b9a2ff" />
-        <ellipse cx="60" cy="76" rx="26" ry="19" fill="#e0d4ff" />
-        <ellipse cx="29" cy="65" rx="8" ry="5" fill="#ff9ec4" opacity=".75" />
-        <ellipse cx="91" cy="65" rx="8" ry="5" fill="#ff9ec4" opacity=".75" />
-
+    <header class="top">
+      <svg id="mascot" class="mascot sleepy" viewBox="0 0 140 130" aria-hidden="true">
+        <g class="steam" fill="none" stroke="#b08a7e" stroke-width="4" stroke-linecap="round">
+          <path class="s1" d="M52 38c-7-8 7-13 0-22" />
+          <path class="s2" d="M70 34c-7-8 7-13 0-22" />
+          <path class="s3" d="M88 38c-7-8 7-13 0-22" />
+        </g>
+        <ellipse cx="70" cy="113" rx="50" ry="9" fill="#fff" stroke="#4a2c2a" stroke-width="3" />
+        <path d="M26 48h88v28c0 22-16 35-44 35S26 98 26 76z" fill="#fff8ee" stroke="#4a2c2a" stroke-width="3" stroke-linejoin="round" />
+        <path d="M114 58c21-2 21 27 0 27" fill="none" stroke="#4a2c2a" stroke-width="5" stroke-linecap="round" />
+        <ellipse cx="70" cy="48" rx="44" ry="8" fill="#a9714b" stroke="#4a2c2a" stroke-width="3" />
+        <ellipse cx="45" cy="84" rx="8" ry="5" fill="#ff8fab" opacity=".7" />
+        <ellipse cx="95" cy="84" rx="8" ry="5" fill="#ff8fab" opacity=".7" />
         <g class="awake-only">
-          <circle cx="42" cy="52" r="6.5" fill="#3d2f63" />
-          <circle cx="78" cy="52" r="6.5" fill="#3d2f63" />
-          <circle cx="44" cy="49.5" r="2.2" fill="#fff" />
-          <circle cx="80" cy="49.5" r="2.2" fill="#fff" />
-          <path d="M51 64q9 10 18 0" fill="none" stroke="#3d2f63" stroke-width="3" stroke-linecap="round" />
+          <circle cx="55" cy="72" r="4.8" fill="#4a2c2a" />
+          <circle cx="85" cy="72" r="4.8" fill="#4a2c2a" />
+          <circle cx="56.6" cy="70.2" r="1.6" fill="#fff" />
+          <circle cx="86.6" cy="70.2" r="1.6" fill="#fff" />
+          <path d="M63 82q7 8 14 0" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round" />
         </g>
         <g class="sleepy-only">
-          <path d="M35 53q7 6 14 0" fill="none" stroke="#3d2f63" stroke-width="3" stroke-linecap="round" />
-          <path d="M71 53q7 6 14 0" fill="none" stroke="#3d2f63" stroke-width="3" stroke-linecap="round" />
-          <circle cx="60" cy="67" r="3" fill="#3d2f63" />
-          <text x="94" y="30" font-size="14" font-weight="700" fill="#3d2f63">z</text>
-          <text x="103" y="18" font-size="10" font-weight="700" fill="#3d2f63">z</text>
+          <path d="M49 73q6 5 12 0" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round" />
+          <path d="M79 73q6 5 12 0" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round" />
+          <circle cx="70" cy="84" r="2.8" fill="#4a2c2a" />
         </g>
       </svg>
-      <div class="bubble"><p id="bubble">Waking up…</p></div>
+
+      <div class="title">
+        <h1>Little Bean Café</h1>
+        <p class="tagline">Warm cups, soft pastries, tiny prices.</p>
+        <p id="sign" class="sign closed">Closed</p>
+      </div>
+    </header>
+
+    <p class="bubble" id="bubble">Warming up the machine…</p>
+
+    <nav id="filters" class="filters" aria-label="Menu categories"></nav>
+
+    <div class="bar">
+      <h2 id="count">Menu</h2>
+      <button id="refresh" type="button" class="ghost">Refresh</button>
     </div>
 
-    <section class="panel">
-      <div class="head">
-        <h2>Latest values</h2>
-        <button id="refresh" type="button">Refresh</button>
-      </div>
-      <div id="stats" class="stats"></div>
-      <div id="chart" class="chart" role="img" aria-label="Bar chart of the latest values"></div>
-    </section>
+    <div id="empty" class="empty" hidden>
+      <p><strong>The shelves are empty.</strong></p>
+      <p>Stock the menu from your terminal:</p>
+      <p><code>node scripts/query.js seed</code></p>
+    </div>
 
-    <section class="panel">
-      <h2>All the numbers</h2>
-      <div id="empty" class="empty" hidden>
-        <p>Nothing here yet. Add some values from your terminal:</p>
-        <p><code>node scripts/query.js seed</code></p>
-      </div>
-      <div class="table-wrap">
-        <table id="table" hidden>
-          <thead><tr><th>Label</th><th class="num">Value</th><th>Added</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+    <div id="menu"></div>
 
-    <footer>made with 💜 on Netlify</footer>
+    <footer>Little Bean Café · made with 💜 on Netlify</footer>
   </main>
+
+  <aside id="tray" class="tray" hidden aria-live="polite">
+    <div class="tray-info">
+      <span class="tray-label">Your tray</span>
+      <span id="tray-text" class="tray-text"></span>
+    </div>
+    <strong id="tray-total" class="tray-total"></strong>
+    <button id="clear-tray" type="button" class="ghost">Clear</button>
+  </aside>
+
   <script src="app.js"></script>
 </body>
 </html>

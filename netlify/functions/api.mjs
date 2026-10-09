@@ -4,7 +4,7 @@
 // Routes:
 //   GET    /api/health
 //   GET    /api/records                       -> list all records
-//   POST   /api/records  {label, value}       -> add one record
+//   POST   /api/records  {label, value, category?, note?}  -> add one record
 //   POST   /api/records  {records:[...], replace:true}  -> add many (optionally replacing all)
 //   DELETE /api/records                       -> delete all records
 //
@@ -28,8 +28,10 @@ const save = (records) => getStore("records").setJSON(KEY, records);
 function clean(input) {
   const label = String(input?.label ?? "").trim().slice(0, 50);
   const value = Number(input?.value);
-  if (!label || !Number.isFinite(value)) return null;
-  return { id: crypto.randomUUID(), label, value, createdAt: new Date().toISOString() };
+  if (!label || !Number.isFinite(value) || value < 0) return null;
+  const category = String(input?.category ?? "").trim().slice(0, 30) || "Other";
+  const note = String(input?.note ?? "").trim().slice(0, 120);
+  return { id: crypto.randomUUID(), label, value, category, note, createdAt: new Date().toISOString() };
 }
 
 export default async (req) => {
@@ -57,7 +59,7 @@ export default async (req) => {
       const incoming = Array.isArray(body.records) ? body.records : [body];
       const cleaned = incoming.map(clean);
       if (cleaned.some((r) => r === null)) {
-        return json({ error: "Each record needs a text label and a numeric value" }, 400);
+        return json({ error: "Each record needs a name (label) and a price (number, 0 or more)" }, 400);
       }
 
       const existing = body.replace ? [] : await load();
