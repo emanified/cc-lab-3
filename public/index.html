@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Site</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>My site is live</h1>
+    <p class="lead">This page is the frontend. It talks to a backend function at <code>/api</code>.</p>
+
+    <section>
+      <h2>Try the backend</h2>
+      <form id="hello-form">
+        <label for="name">Your name</label>
+        <div class="row">
+          <input id="name" name="name" placeholder="Ada" autocomplete="off" />
+          <button type="submit">Say hello</button>
+        </div>
+      </form>
+      <p id="hello-result" role="status" aria-live="polite"></p>
+    </section>
+
+    <section>
+      <h2>What's in this project</h2>
+      <ul id="items"><li>Loading…</li></ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

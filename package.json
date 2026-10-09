@@ -1,0 +1,11 @@
+{
+  "name": "my-site",
+  "version": "1.0.0",
+  "description": "Simple site: static frontend + Netlify Function backend + query script",
+  "private": true,
+  "scripts": {
+    "dev": "netlify dev",
+    "query": "node scripts/query.js"
+  },
+  "engines": { "node": ">=18" }
+}
