@@ -4,74 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Little Bean Café</title>
+  <meta name="description" content="Specialty coffee and fresh pastries, made daily." />
+  <link rel="icon" href="logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <header class="top">
-      <svg id="mascot" class="mascot sleepy" viewBox="0 0 140 130" aria-hidden="true">
-        <g class="steam" fill="none" stroke="#b08a7e" stroke-width="4" stroke-linecap="round">
-          <path class="s1" d="M52 38c-7-8 7-13 0-22" />
-          <path class="s2" d="M70 34c-7-8 7-13 0-22" />
-          <path class="s3" d="M88 38c-7-8 7-13 0-22" />
-        </g>
-        <ellipse cx="70" cy="113" rx="50" ry="9" fill="#fff" stroke="#4a2c2a" stroke-width="3" />
-        <path d="M26 48h88v28c0 22-16 35-44 35S26 98 26 76z" fill="#fff8ee" stroke="#4a2c2a" stroke-width="3" stroke-linejoin="round" />
-        <path d="M114 58c21-2 21 27 0 27" fill="none" stroke="#4a2c2a" stroke-width="5" stroke-linecap="round" />
-        <ellipse cx="70" cy="48" rx="44" ry="8" fill="#a9714b" stroke="#4a2c2a" stroke-width="3" />
-        <ellipse cx="45" cy="84" rx="8" ry="5" fill="#ff8fab" opacity=".7" />
-        <ellipse cx="95" cy="84" rx="8" ry="5" fill="#ff8fab" opacity=".7" />
-        <g class="awake-only">
-          <circle cx="55" cy="72" r="4.8" fill="#4a2c2a" />
-          <circle cx="85" cy="72" r="4.8" fill="#4a2c2a" />
-          <circle cx="56.6" cy="70.2" r="1.6" fill="#fff" />
-          <circle cx="86.6" cy="70.2" r="1.6" fill="#fff" />
-          <path d="M63 82q7 8 14 0" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round" />
-        </g>
-        <g class="sleepy-only">
-          <path d="M49 73q6 5 12 0" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round" />
-          <path d="M79 73q6 5 12 0" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round" />
-          <circle cx="70" cy="84" r="2.8" fill="#4a2c2a" />
-        </g>
-      </svg>
-
-      <div class="title">
-        <h1>Little Bean Café</h1>
-        <p class="tagline">Warm cups, soft pastries, tiny prices.</p>
-        <p id="sign" class="sign closed">Closed</p>
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="logo" src="logo.jpg" width="132" height="132" alt="Little Bean Café logo: a polar bear holding a cup of coffee" />
+      <div>
+        <h1>Café Bear</h1>
+        <p class="tagline">Specialty coffee and fresh pastries, made daily.</p>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <p class="bubble" id="bubble">Warming up the machine…</p>
-
-    <nav id="filters" class="filters" aria-label="Menu categories"></nav>
-
-    <div class="bar">
-      <h2 id="count">Menu</h2>
-      <button id="refresh" type="button" class="ghost">Refresh</button>
+  <main>
+    <div class="toolbar">
+      <nav id="filters" class="tabs" aria-label="Menu categories"></nav>
+      <button id="refresh" type="button" class="link">Refresh menu</button>
     </div>
 
+    <p id="count" class="count"></p>
+
     <div id="empty" class="empty" hidden>
-      <p><strong>The shelves are empty.</strong></p>
-      <p>Stock the menu from your terminal:</p>
-      <p><code>node scripts/query.js seed</code></p>
+      <p><strong>The menu is being updated.</strong></p>
+      <p>Please check back soon.</p>
+      <p class="dev">Developer note: add items with <code>node scripts/query.js seed</code></p>
     </div>
 
     <div id="menu"></div>
-
-    <footer>Little Bean Café · made with 💜 on Netlify</footer>
   </main>
+
+  <footer>© <span id="year"></span> Little Bean Café</footer>
 
   <aside id="tray" class="tray" hidden aria-live="polite">
     <div class="tray-info">
-      <span class="tray-label">Your tray</span>
+      <span class="tray-label">Your order</span>
       <span id="tray-text" class="tray-text"></span>
     </div>
     <strong id="tray-total" class="tray-total"></strong>
-    <button id="clear-tray" type="button" class="ghost">Clear</button>
+    <button id="clear-tray" type="button" class="clear">Clear</button>
   </aside>
 
   <script src="app.js"></script>
